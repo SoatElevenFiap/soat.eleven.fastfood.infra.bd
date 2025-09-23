@@ -2,16 +2,16 @@
 
 Este repositório contém a infraestrutura como código (IaC) para provisionamento e gerenciamento do banco de dados da aplicação **SoatElevenFastFood**.
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
 Este repositório é responsável exclusivamente pela criação e gerenciamento da infraestrutura de banco de dados para a aplicação SoatElevenFastFood, utilizando **Terraform** para automatizar o provisionamento de recursos de banco de dados gerenciado em nuvem.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Terraform**: Infrastructure as Code (IaC) para provisionamento automatizado
 - **PostgreSQL**: Sistema de gerenciamento de banco de dados
 
-## 🚀 Como usar
+## Como usar
 
 ### Pré-requisitos
 - [Terraform](https://www.terraform.io/downloads.html) instalado
@@ -33,7 +33,7 @@ terraform apply
 terraform destroy
 ```
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 ├── modules/database/  # Módulo do banco de dados
@@ -43,14 +43,14 @@ terraform destroy
 └── terraform.tfvars  # Variáveis de configuração
 ```
 
-## 🗄️ Recursos Provisionados
+## Recursos Provisionados
 
 Este repositório provisiona:
 - ✅ Banco de dados gerenciado (RDS/Azure SQL/Cloud SQL)
 - ✅ Configurações de segurança e acesso
 
 
-## 📚 Referências
+## Referências
 
 ### Terraform
 - [Documentação Oficial do Terraform](https://www.terraform.io/docs)
