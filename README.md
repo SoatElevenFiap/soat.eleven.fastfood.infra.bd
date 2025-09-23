@@ -49,19 +49,6 @@ Este repositório provisiona:
 - ✅ Banco de dados gerenciado (PostgreSQL)
 - ✅ Configurações de segurança e acesso
 
-
-## Referências
-
-### Terraform
-- [Documentação Oficial do Terraform](https://www.terraform.io/docs)
-- [Terraform Registry](https://registry.terraform.io/) - Módulos e providers
-- [Terraform Best Practices](https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html)
-
-### Provedores de Nuvem
-- [AWS RDS Documentation](https://docs.aws.amazon.com/rds/)
-- [Azure SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-- [Google Cloud SQL Documentation](https://cloud.google.com/sql/docs)
-
 ---
 
 **Projeto**: SoatElevenFastFood - Infraestrutura de Banco de Dados
