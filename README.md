@@ -46,7 +46,7 @@ terraform destroy
 ## Recursos Provisionados
 
 Este repositório provisiona:
-- ✅ Banco de dados gerenciado (RDS/Azure SQL/Cloud SQL)
+- ✅ Banco de dados gerenciado (PostgreSQL)
 - ✅ Configurações de segurança e acesso
 
 
