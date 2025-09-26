@@ -19,8 +19,6 @@ variable "location" {
   type        = string
 }
 
-
-
 # Optional variables with defaults (configuração econômica)
 variable "postgresql_version" {
   description = "Versão do PostgreSQL"

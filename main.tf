@@ -10,12 +10,11 @@ data "azurerm_virtual_network" "existing" {
 
 # PostgreSQL Database Module
 module "database" {
-  source = "./modules/database"
-
+  source = "./modules/database"  
   # Configuração obrigatória
-  server_name             = var.postgresql_server_name
+  server_name = "${var.postgresql_server_name}-${random_id.server_suffix.hex}"
   resource_group_name     = data.azurerm_resource_group.existing.name
-  location               = data.azurerm_resource_group.existing.location
+  location                = var.postgres_low_cost_location
 
   # Configuração econômica
   postgresql_version = var.postgresql_version
