@@ -27,3 +27,11 @@ resource "azurerm_postgresql_flexible_server_database" "main" {
   collation = "en_US.utf8"
   charset   = "UTF8"
 }
+
+# Firewall rule to allow public access from any Azure service within Azure
+resource "azurerm_postgresql_flexible_server_firewall_rule" "allow_azure_services" {
+  name             = "AllowAllAzureIps"
+  server_id        = azurerm_postgresql_flexible_server.main.id
+  start_ip_address = "0.0.0.0"
+  end_ip_address   = "0.0.0.0"
+}

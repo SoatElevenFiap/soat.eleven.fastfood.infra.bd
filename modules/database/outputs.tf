@@ -29,3 +29,8 @@ output "administrator_login" {
   description = "Login do administrador"
   value       = azurerm_postgresql_flexible_server.main.administrator_login
 }
+
+output "azure_services_access_enabled" {
+  description = "Indica se o acesso de serviços Azure está habilitado"
+  value       = true
+}
