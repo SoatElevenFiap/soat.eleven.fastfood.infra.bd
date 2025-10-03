@@ -64,3 +64,4 @@ ehthumbs.db
 # .terraform.lock.hcl
 .terraform.lock.hcl
 .github/workflows/federated.json
+/.vs
