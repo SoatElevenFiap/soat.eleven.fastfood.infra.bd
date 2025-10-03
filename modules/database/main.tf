@@ -44,7 +44,7 @@ resource "azurerm_postgresql_flexible_server_database" "main" {
     delete = "10m"
   }
 }
-}
+
 
 # Firewall rule to allow public access from any Azure service within Azure
 resource "azurerm_postgresql_flexible_server_firewall_rule" "allow_azure_services" {
