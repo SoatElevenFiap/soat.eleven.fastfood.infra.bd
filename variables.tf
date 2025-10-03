@@ -11,6 +11,10 @@ variable "resource_group_name" {
     error_message = "O nome do Resource Group não pode estar vazio."
   }
 }
+variable "postgres_location" {
+  description = "Localização para o PostgreSQL"
+  type        = string
+}
 variable "postgres_low_cost_location" {
   description = "Localização do de baixo custo para o PostgreSQL"
   type        = string
