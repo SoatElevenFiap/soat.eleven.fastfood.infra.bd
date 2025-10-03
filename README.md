@@ -6,6 +6,9 @@ Este repositório contém a infraestrutura como código (IaC) para provisionamen
 
 Este repositório é responsável exclusivamente pela criação e gerenciamento da infraestrutura de banco de dados para a aplicação SoatElevenFastFood, utilizando **Terraform** para automatizar o provisionamento de recursos de banco de dados gerenciado em nuvem.
 
+Desenvolvemos uma documentação especificando todas as tabelas existentes e as tomadas de decisões na ADR:
+https://github.com/SoatElevenFiap/postech-adrs/blob/main/adr-001-estrutura-de-dados.md
+
 ## Tecnologias Utilizadas
 
 - **Terraform**: Infrastructure as Code (IaC) para provisionamento automatizado
