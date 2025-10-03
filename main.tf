@@ -8,18 +8,13 @@ data "azurerm_virtual_network" "existing" {
   resource_group_name = var.resource_group_name
 }
 
-# Generate random suffix for unique server name
-resource "random_id" "server_suffix" {
-  byte_length = 4
-}
-
 # PostgreSQL Database Module
 module "database" {
   source = "./modules/database"  
   # Configuração obrigatória
-  server_name = "${var.postgresql_server_name}-${random_id.server_suffix.hex}"
+  server_name = "${var.postgresql_server_name}"
   resource_group_name     = data.azurerm_resource_group.existing.name
-  location                = var.postgres_low_cost_location
+  location                = var.postgres_location
 
   # Configuração econômica
   postgresql_version = var.postgresql_version
