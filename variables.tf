@@ -1,10 +1,31 @@
 # =================
 # General Variables
 # =================
+variable "location" {
+  description = "Localização dos recursos no Azure"
+  type        = string
+  default     = "Canada Central"
+
+  validation {
+    condition = contains([
+      "West US 3",
+      "West US 2",
+      "East US",
+      "Central US",
+      "South Central US",
+      "North Central US",
+      "Brazil South",
+      "West Europe",
+      "North Europe",
+      "Canada Central"
+    ], var.location)
+    error_message = "A localização deve ser uma região válida do Azure."
+  }
+}
 variable "resource_group_name" {
   description = "Nome do Resource Group existente"
   type        = string
-  default     = "rg-fastfood-postech"
+  default     = "rg-fastfood-postech-database"
 
   validation {
     condition     = length(var.resource_group_name) > 0
@@ -104,3 +125,33 @@ variable "postgresql_database_name" {
   type        = string
   default     = "fastfood"
 }
+
+# =================
+
+# ============================================
+# Azure Key Vault Variables
+# ============================================
+
+variable "keyvault_name" {
+  description = "Nome do Azure Key Vault"
+  type        = string
+  default     = "kv-fastfood-postech"
+
+  validation {
+    condition     = can(regex("^[a-zA-Z]([a-zA-Z0-9-]){1,22}[a-zA-Z0-9]$", var.keyvault_name))
+    error_message = "O nome do Key Vault deve ter entre 3-24 caracteres, começar com letra, e conter apenas letras, números e hífens."
+  }
+}
+
+variable "keyvault_sku_name" {
+  description = "SKU do Key Vault (standard ou premium)"
+  type        = string
+  default     = "standard"
+
+  validation {
+    condition     = contains(["standard", "premium"], var.keyvault_sku_name)
+    error_message = "SKU deve ser standard ou premium."
+  }
+}
+
+# ============================================

@@ -1,11 +1,9 @@
-# Data sources para referenciar recursos existentes
-data "azurerm_resource_group" "existing" {
-  name = var.resource_group_name
-}
+# Create a resource group
+resource "azurerm_resource_group" "rg-postech-database" {
+  name     = var.resource_group_name
+  location = var.location
 
-data "azurerm_virtual_network" "existing" {
-  name                = var.vnet_name
-  resource_group_name = var.resource_group_name
+  tags = var.tags
 }
 
 # PostgreSQL Database Module
@@ -13,8 +11,8 @@ module "database" {
   source = "./modules/database"  
   # Configuração obrigatória
   server_name = "${var.postgresql_server_name}"
-  resource_group_name     = data.azurerm_resource_group.existing.name
   location                = var.postgres_location
+  resource_group_name     = azurerm_resource_group.rg-postech-database.name
 
   # Configuração econômica
   postgresql_version = var.postgresql_version
@@ -32,4 +30,25 @@ module "database" {
     CreatedBy   = "Terraform"
     Module      = "PostgreSQL"
   })
+}
+
+module "keyvault" {
+  source = "./modules/keyvault"
+
+  keyvault_name       = var.keyvault_name
+  resource_group_name = azurerm_resource_group.rg-postech-database.name
+  location            = azurerm_resource_group.rg-postech-database.location
+
+  sku_name = var.keyvault_sku_name
+
+  database_connection_string = module.database.connection_string 
+
+  tags = merge(var.tags, {
+    Environment = var.environment
+    Project     = "FastFood-System"
+    CreatedBy   = "Terraform"
+    Module      = "KeyVault"
+  })
+
+  depends_on = [azurerm_resource_group.rg-postech-database]
 }

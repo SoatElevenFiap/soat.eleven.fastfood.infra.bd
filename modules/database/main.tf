@@ -28,6 +28,10 @@ resource "azurerm_postgresql_flexible_server" "main" {
   }
   
   tags = var.tags
+
+  lifecycle {
+    ignore_changes = [ zone, high_availability ]
+  }
 }
 
 # PostgreSQL Database

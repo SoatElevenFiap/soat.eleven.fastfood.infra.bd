@@ -4,7 +4,8 @@
 # =================
 
 # Configurações do Resource Group Existente
-resource_group_name = "rg-fastfood-postech"
+resource_group_name = "rg-fastfood-postech-database"
+location            = "Canada Central"  # Região primária para recursos
 
 # Configurações da VNet Existente  
 vnet_name = "vnet-fastfood-postech"
