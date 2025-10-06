@@ -29,11 +29,50 @@ resource "azurerm_key_vault" "main" {
   tags = var.tags
 }
 
+# Database Connection String Secret
 resource "azurerm_key_vault_secret" "database_connection" {
   count        = var.database_connection_string != null ? 1 : 0
   name         = "database-connection-string"
   value        = var.database_connection_string
   key_vault_id = azurerm_key_vault.main.id
+  content_type = "Database Connection String"
+  
+  tags = merge(var.tags, {
+    Purpose = "Database Connection"
+    Type    = "Connection String"
+  })
+  
+  depends_on = [azurerm_key_vault.main]
+}
+
+# Salt Key Secret for Password Encryption
+resource "azurerm_key_vault_secret" "salt_key" {
+  count        = var.salt_key != null ? 1 : 0
+  name         = "app-salt-key"
+  value        = var.salt_key
+  key_vault_id = azurerm_key_vault.main.id
+  content_type = "Application Salt Key"
+  
+  tags = merge(var.tags, {
+    Purpose = "Password Encryption"
+    Type    = "Salt Key"
+  })
+  
+  depends_on = [azurerm_key_vault.main]
+}
+
+# Secret Key for Token Encryption
+resource "azurerm_key_vault_secret" "secret_key" {
+  count        = var.secret_key != null ? 1 : 0
+  name         = "app-secret-key"
+  value        = var.secret_key
+  key_vault_id = azurerm_key_vault.main.id
+  content_type = "Application Secret Key"
+  
+  tags = merge(var.tags, {
+    Purpose = "Token Encryption"
+    Type    = "Secret Key"
+  })
   
   depends_on = [azurerm_key_vault.main]
 }

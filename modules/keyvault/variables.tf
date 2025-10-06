@@ -112,6 +112,19 @@ variable "database_connection_string" {
   sensitive   = true
 }
 
+# Application Security Keys
+variable "salt_key" {
+  description = "Salt key para encriptação de senhas"
+  type        = string
+  sensitive   = true
+}
+
+variable "secret_key" {
+  description = "Secret key para encriptação de tokens"
+  type        = string
+  sensitive   = true
+}
+
 variable "tags" {
   description = "Tags para aplicar aos recursos"
   type        = map(string)

@@ -8,16 +8,16 @@ resource "azurerm_resource_group" "rg-postech-database" {
 
 # PostgreSQL Database Module
 module "database" {
-  source = "./modules/database"  
+  source = "./modules/database"
   # Configuração obrigatória
-  server_name = "${var.postgresql_server_name}"
-  location                = var.postgres_location
-  resource_group_name     = azurerm_resource_group.rg-postech-database.name
+  server_name         = var.postgresql_server_name
+  location            = var.postgres_location
+  resource_group_name = azurerm_resource_group.rg-postech-database.name
 
   # Configuração econômica
-  postgresql_version = var.postgresql_version
-  sku_name          = var.postgresql_sku_name
-  storage_mb        = var.postgresql_storage_mb
+  postgresql_version    = var.postgresql_version
+  sku_name              = var.postgresql_sku_name
+  storage_mb            = var.postgresql_storage_mb
   backup_retention_days = var.postgresql_backup_retention_days
 
   # Banco de dados
@@ -41,7 +41,11 @@ module "keyvault" {
 
   sku_name = var.keyvault_sku_name
 
-  database_connection_string = module.database.connection_string 
+  database_connection_string = module.database.connection_string
+
+  # Application Security Keys
+  salt_key   = var.app_salt_key
+  secret_key = var.app_secret_key
 
   tags = merge(var.tags, {
     Environment = var.environment

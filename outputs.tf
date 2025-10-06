@@ -39,12 +39,12 @@ output "postgresql_administrator_login" {
 
 output "resource_group_name" {
   description = "Nome do Resource Group utilizado"
-  value       = data.azurerm_resource_group.rg-postech-database.name
+  value       = azurerm_resource_group.rg-postech-database.name
 }
 
 output "resource_group_location" {
   description = "Localização do Resource Group"
-  value       = data.azurerm_resource_group.rg-postech-database.location
+  value       = azurerm_resource_group.rg-postech-database.location
 }
 
 # ============================================
@@ -70,4 +70,22 @@ output "database_secret_uri" {
 output "key_vault_id" {
   description = "ID do Key Vault"
   value       = module.keyvault.keyvault_id
+}
+
+output "key_vault_uri" {
+  description = "URI do Key Vault"
+  value       = module.keyvault.keyvault_uri
+}
+
+# Security Keys Outputs
+output "salt_key_secret_uri" {
+  description = "URI do secret salt key no Key Vault"
+  value       = module.keyvault.salt_key_secret_uri
+  sensitive   = true
+}
+
+output "secret_key_secret_uri" {
+  description = "URI do secret key para tokens no Key Vault"
+  value       = module.keyvault.secret_key_secret_uri
+  sensitive   = true
 }

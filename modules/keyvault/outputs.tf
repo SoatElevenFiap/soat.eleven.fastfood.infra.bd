@@ -29,12 +29,26 @@ output "location" {
   value       = azurerm_key_vault.main.location
 }
 
-output "database_secret_name" {
-  description = "Nome do secret da connection string do banco (se criado)"
-  value       = azurerm_key_vault_secret.database_connection[0].name
+# Database Connection String Secret outputs
+output "database_secret_uri" {
+  description = "ID do secret da connection string do banco"
+  value       = azurerm_key_vault_secret.database_connection[0].id
 }
 
-output "database_secret_uri" {
-  description = "ID do secret da connection string do banco (se criado)"
-  value       = azurerm_key_vault_secret.database_connection[0].id
+# Salt Key Secret outputs
+output "salt_key_secret_uri" {
+  description = "ID do secret salt key"
+  value       = azurerm_key_vault_secret.salt_key[0].id
+}
+
+# Secret Key outputs
+output "secret_key_secret_uri" {
+  description = "ID do secret key para tokens"
+  value       = azurerm_key_vault_secret.secret_key[0].id
+}
+
+# Access information
+output "keyvault_access_policy_object_id" {
+  description = "Object ID usado na access policy"
+  value       = data.azurerm_client_config.current.object_id
 }

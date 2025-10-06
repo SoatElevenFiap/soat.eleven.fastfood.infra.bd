@@ -21,6 +21,16 @@ https://github.com/SoatElevenFiap/postech-adrs/blob/main/adr-001-estrutura-de-da
 - Credenciais configuradas para o provedor de nuvem
 - Git para controle de versão
 
+### Variáveis necessárias
+- **app_secret_key**
+- **app_salt_key**
+
+Em ambiente local, defina através de: 
+```bash
+$env:TF_VAR_app_secret_key="SEU_VALOR_DE_SECRET_KEY_AQUI"  
+$env:TF_VAR_app_salt_key="SEU_VALOR_DE_SALT_AQUI"
+```
+
 ### Comandos básicos
 ```bash
 # Inicializar o Terraform
@@ -55,3 +65,4 @@ Este repositório provisiona:
 ---
 
 **Projeto**: SoatElevenFastFood - Infraestrutura de Banco de Dados
+

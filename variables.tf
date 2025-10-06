@@ -87,11 +87,11 @@ variable "postgresql_sku_name" {
   description = "Nome do SKU do PostgreSQL (econômico)"
   type        = string
   default     = "B_Standard_B1ms"
-  
+
   validation {
     condition = contains([
       "B_Standard_B1ms",
-      "B_Standard_B2s", 
+      "B_Standard_B2s",
       "GP_Standard_D2s_v3"
     ], var.postgresql_sku_name)
     error_message = "Use um SKU econômico (Basic B1ms, B2s ou GP D2s_v3)."
@@ -101,8 +101,8 @@ variable "postgresql_sku_name" {
 variable "postgresql_storage_mb" {
   description = "Armazenamento do PostgreSQL em MB"
   type        = number
-  default     = 32768  # 32GB
-  
+  default     = 32768 # 32GB
+
   validation {
     condition     = var.postgresql_storage_mb >= 32768 && var.postgresql_storage_mb <= 65536
     error_message = "O armazenamento deve estar entre 32GB e 64GB para economia."
@@ -113,7 +113,7 @@ variable "postgresql_backup_retention_days" {
   description = "Dias de retenção de backup do PostgreSQL"
   type        = number
   default     = 7
-  
+
   validation {
     condition     = var.postgresql_backup_retention_days >= 7 && var.postgresql_backup_retention_days <= 14
     error_message = "A retenção de backup deve estar entre 7 e 14 dias para economia."
@@ -152,6 +152,19 @@ variable "keyvault_sku_name" {
     condition     = contains(["standard", "premium"], var.keyvault_sku_name)
     error_message = "SKU deve ser standard ou premium."
   }
+}
+
+# Application Security Keys
+variable "app_salt_key" {
+  description = "Salt key para encriptação de senhas"
+  type        = string
+  sensitive   = true
+}
+
+variable "app_secret_key" {
+  description = "Secret key para encriptação de tokens"
+  type        = string
+  sensitive   = true
 }
 
 # ============================================
