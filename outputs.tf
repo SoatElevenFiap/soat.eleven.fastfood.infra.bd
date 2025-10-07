@@ -61,12 +61,6 @@ output "database_summary" {
   }
 }
 
-output "database_secret_uri" {
-  description = "URI do segredo no Key Vault (se configurado)"
-  value       = module.keyvault.database_secret_uri
-  depends_on  = [module.keyvault]
-}
-
 output "key_vault_id" {
   description = "ID do Key Vault"
   value       = module.keyvault.keyvault_id
@@ -77,7 +71,12 @@ output "key_vault_uri" {
   value       = module.keyvault.keyvault_uri
 }
 
-# Security Keys Outputs
+output "database_secret_uri" {
+  description = "URI do segredo no Key Vault (se configurado)"
+  value       = module.keyvault.database_secret_uri
+  sensitive   = true
+}
+
 output "salt_key_secret_uri" {
   description = "URI do secret salt key no Key Vault"
   value       = module.keyvault.salt_key_secret_uri
