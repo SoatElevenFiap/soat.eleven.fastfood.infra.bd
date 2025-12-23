@@ -77,10 +77,22 @@ variable "postgresql_server_name" {
   default     = "psql-fastfood-postech"
 }
 
-variable "postgresql_server_name_user_service" {
-  description = "Nome do servidor PostgreSQL para o serviço de usuários"
+variable "postgresql_database_name_users" {
+  description = "Nome do banco de dados de usuários"
   type        = string
-  default     = "psql-fastfood-postech-user-service"
+  default     = "users"
+}
+
+variable "postgresql_database_name_pedidos" {
+  description = "Nome do banco de dados de pedidos"
+  type        = string
+  default     = "pedidos"
+}
+
+variable "postgresql_database_name_produto" {
+  description = "Nome do banco de dados de produtos"
+  type        = string
+  default     = "produto"
 }
 
 variable "postgresql_version" {
@@ -124,12 +136,6 @@ variable "postgresql_backup_retention_days" {
     condition     = var.postgresql_backup_retention_days >= 7 && var.postgresql_backup_retention_days <= 14
     error_message = "A retenção de backup deve estar entre 7 e 14 dias para economia."
   }
-}
-
-variable "postgresql_database_name" {
-  description = "Nome do banco de dados principal"
-  type        = string
-  default     = "fastfood"
 }
 
 # =================
