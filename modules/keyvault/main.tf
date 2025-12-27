@@ -14,8 +14,12 @@ resource "azurerm_key_vault" "main" {
   
   public_network_access_enabled = var.public_network_access_enabled
   
-  soft_delete_retention_days = var.soft_delete_retention_days
-  purge_protection_enabled   = var.purge_protection_enabled
+  soft_delete_retention_days      = var.soft_delete_retention_days
+  purge_protection_enabled        = var.purge_protection_enabled
+  enable_rbac_authorization       = false
+  
+  # Automatically recover soft-deleted Key Vault
+  recover_soft_deleted_key_vault  = true
 
   access_policy {
     tenant_id = data.azurerm_client_config.current.tenant_id

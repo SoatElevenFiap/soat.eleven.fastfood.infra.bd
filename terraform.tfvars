@@ -38,5 +38,5 @@ postgres_low_cost_location          = "West Central US" # Região com custo mais
 # =================
 # Configuração Key Vault
 # =================
-keyvault_name     = "kv-fastfood-postech"
+keyvault_name     = "kv-fastfood-pt-26dec"
 keyvault_sku_name = "standard"
