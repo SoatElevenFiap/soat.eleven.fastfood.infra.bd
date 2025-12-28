@@ -24,8 +24,8 @@ tags = {
 # =================
 # Configuração PostgreSQL - Configuração Econômica
 # =================
-postgresql_server_name              = "psql-fastfood-postech-001-lowcost-and"
-postgresql_server_name_user_service = "psql-fastfood-postech-user-service"
+postgresql_server_name              = "psql-fastfood-pt-v2-20241228"
+postgresql_server_name_user_service = "psql-fastfood-pt-user-v2"
 
 postgresql_version                  = "14"
 postgresql_sku_name                 = "B_Standard_B1ms" # SKU mais econômico
@@ -38,5 +38,5 @@ postgres_low_cost_location          = "West Central US" # Região com custo mais
 # =================
 # Configuração Key Vault
 # =================
-keyvault_name     = "kv-fastfood-pt-26dec"
+keyvault_name     = "kv-fastfood-pt-28dec-v2"
 keyvault_sku_name = "standard"
